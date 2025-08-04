@@ -76,16 +76,53 @@
             background-color: #4b5563; /* Gris oscuro para clases */
         }
     </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Debes reemplazar 'GA_MEASUREMENT_ID' con tu ID de medición de Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Función de JavaScript para rastrear los clics de los botones -->
+    <script>
+      function trackButtonClick(buttonName, buttonUrl) {
+          // Envía un evento a Google Analytics.
+          // El nombre del evento es 'button_click'
+          // Las propiedades del evento son 'button_name' y 'button_url'
+          if (typeof gtag === 'function') {
+              gtag('event', 'button_click', {
+                  'button_name': buttonName,
+                  'button_url': buttonUrl
+              });
+              console.log('Evento de clic enviado:', buttonName, buttonUrl);
+          } else {
+              console.log('gtag no está disponible. No se pudo enviar el evento.');
+          }
+
+          // Espera 100ms para que el evento se envíe antes de navegar
+          setTimeout(function() {
+              window.open(buttonUrl, '_blank');
+          }, 100);
+      }
+    </script>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-blue-700 to-black">
     <div class="w-full max-w-sm p-6 bg-white rounded-2xl shadow-xl flex flex-col items-center">
-        <!-- Logo de IdiomasWeb - Se ha actualizado la URL y el tamaño para el menú -->
-        <img src="https://github.com/idiomaswebespanol/menu-botones-enlaces/blob/main/Logo.png?raw=true" alt="Logo de IdiomasWeb" class="w-full h-auto mb-6 max-w-xs">       
+        <!-- Logo de IdiomasWeb -->
+        <img src="https://github.com/idiomaswebespanol/menu-botones-enlaces/blob/main/Logo.png?raw=true" alt="Logo de IdiomasWeb" class="w-full h-auto mb-6 max-w-xs">
+        
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-6">IdiomasWeb</h1>
+        
         <!-- Contenedor de botones con espacio entre ellos -->
         <div class="space-y-4 w-full">
             <!-- Botón de Instagram con borde animado -->
             <div class="animated-border">
-                <a href="https://www.instagram.com/idiomasweb" target="_blank"
+                <a href="#" onclick="trackButtonClick('Instagram', 'https://www.instagram.com/idiomasweb')"
                    class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 instagram">
                     <!-- Icono de Instagram -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.265-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.849-.07zm0-2.163c-3.649 0-4.067.016-5.185.074-4.79 0-6.425 1.401-6.578 6.578-.058 1.118-.074 1.536-.074 5.184 0 3.649.016 4.067.074 5.185.153 4.773 1.792 6.421 6.578 6.578 1.118.058 1.536.074 5.185.074 3.649 0 4.067-.016 5.185-.074 4.79-.157 6.425-1.795 6.578-6.578.058-1.118.074-1.536.074-5.185 0-3.649-.016-4.067-.074-5.185-.157-4.772-1.795-6.417-6.579-6.578-1.118-.058-1.536-.074-5.185-.074zm0 6.868c-2.486 0-4.5 2.015-4.5 4.5s2.014 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.014-4.5-4.5-4.5zm0 7.378c-1.597 0-2.893-1.296-2.893-2.893s1.296-2.893 2.893-2.893 2.893 1.296 2.893 2.893c0 1.597-1.296 2.893-2.893 2.893zm-5.405-8.204c-.452 0-.822.37-.822.82s.37.82.822.82.82-.37.82-.82-.369-.82-.822-.82z"/></svg>
@@ -95,7 +132,7 @@
             
             <!-- Botón de Comunidad con borde animado -->
             <div class="animated-border">
-                <a href="https://idiomaswebespanol.github.io/unirse_a_la_comunidad/" target="_blank"
+                <a href="#" onclick="trackButtonClick('Comunidad', 'https://idiomaswebespanol.github.io/unirse_a_la_comunidad/')"
                    class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 community">
                     <!-- Icono de chat o comunidad -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12c0 1.961.554 3.844 1.583 5.5l-.992 2.758a1 1 0 001.521 1.056l3.208-1.739A9.962 9.962 0 0012 22c5.514 0 10-4.486 10-10S17.514 2 12 2zm0 18c-1.892 0-3.71-.557-5.275-1.582l-2.488 1.348.88-2.443A8.01 8.01 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zM7 10h10v2H7z"/></svg>
@@ -105,7 +142,8 @@
             
             <!-- Botón de Ebook con borde animado -->
             <div class="animated-border">
-                <a href="#" class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 ebook">
+                <a href="#" onclick="trackButtonClick('Ebook', '#')"
+                   class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 ebook">
                     <!-- Icono de libro -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M21 21h-18v-18h18v18zm-2-16h-14v14h14v-14zm-1 2h-10v10h10v-10zm-1 2h-8v6h8v-6zm-1-4h-6v-2h6v2zm-6-2h-2v2h2v-2z"/></svg>
                     Ebook
@@ -114,7 +152,8 @@
             
             <!-- Botón de Consultoría con borde animado -->
             <div class="animated-border">
-                <a href="#" class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 consultoria">
+                <a href="#" onclick="trackButtonClick('Consultoria', '#')"
+                   class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 consultoria">
                     <!-- Icono de consultoría/maletín -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-3.414l-2.586-2.586a1 1 0 00-.707-.293H8.707a1 1 0 00-.707.293L5.414 6H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2zM4 20V8h16l-.001 12H4zM6 10h12v8H6z"/></svg>
                     Consultoría individual (programa)
@@ -123,7 +162,8 @@
             
             <!-- Botón de Clases con borde animado -->
             <div class="animated-border">
-                <a href="#" class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 clases">
+                <a href="#" onclick="trackButtonClick('Clases', '#')"
+                   class="flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white rounded-xl transform hover:scale-105 clases">
                     <!-- Icono de graduación/clases -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c-3.18 0-6.19 1.15-8.5 3.09l-2.071 1.724a1 1 0 00-.001 1.417L12 18l10.572-9.76a1 1 0 000-1.416L20.5 5.09C18.19 3.15 15.18 2 12 2zm0 14.15L3.856 7.557l1.32-1.1c1.83-1.52 4.14-2.39 6.824-2.39s4.994.87 6.824 2.39l1.32 1.1L12 16.15zM12 12a3 3 0 100-6 3 3 0 000 6zm0-4a1 1 0 110 2 1 1 0 010-2z"/></svg>
                     Clases
